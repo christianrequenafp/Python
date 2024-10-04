@@ -99,22 +99,9 @@ def ahorcado():
 
     print(f"Bienvenido al ahorcado! Tu palabratiene {len(palabra_secreta)} lletres.")
 
-    while intentos > 0:
+    while intentos > 0 and palabra_secreta != 0:
         mostrar_tablero(palabra_secreta, aciertos)
         letra = input("Introduce una letra: ").lower()
-
-        if len(letra) > 1:
-            if letra == palabra_secreta:
-                aciertos = list(palabra_secreta)
-                break
-            else:
-                intentos -= 1
-                print(f"Incorrecto! Te quedan {intentos} intentos.")
-        
-
-        if letra in aciertos or letra in errores:
-            print("Esta letra ya la has dicho antes!")
-            continue
 
         if letra in palabra_secreta:
             aciertos.add(letra)
@@ -125,6 +112,20 @@ def ahorcado():
             errores.add(letra)
             intentos -= 1
             print(f"Letra incorrecta. Te quedan {intentos} intentos.")
+
+        if len(letra) > 1:
+            if letra == palabra_secreta:
+                aciertos = list(palabra_secreta)
+                palabra_secreta = 0
+                break
+            else:
+                intentos -= 1
+                print(f"Incorrecto! Te quedan {intentos} intentos.")
+        
+
+        if letra in aciertos or letra in errores:
+            print("Esta letra ya la has dicho antes!")
+            continue
 
     if aciertos == list(palabra_secreta):
         print(f"Felicidades! Has adivinado la palabra: {palabra_secreta}")
