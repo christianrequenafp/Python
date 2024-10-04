@@ -97,7 +97,7 @@ def ahorcado():
     aciertos = set()
     errores = set()
 
-    print(f"Bienvenido al ahorcado! Tu palabratiene {len(palabra_secreta)} lletres.")
+    print(f"Bienvenido al ahorcado! Tu palabra tiene {len(palabra_secreta)} letras.")
 
     while intentos > 0 and palabra_secreta != 0:
         mostrar_tablero(palabra_secreta, aciertos)
